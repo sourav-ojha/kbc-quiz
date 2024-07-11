@@ -42,7 +42,7 @@ export default class Preloader extends Scene {
 
     // loading delay is 5 seconds, so fill the progresbar in 5 seconds
     // on each sec the progress bar will be filled with 20%
-    this.loader_time_in_sec = 5;
+    this.loader_time_in_sec = 6;
     let loader = setInterval(() => {
       bar.width += this.rect_pos.width / this.loader_time_in_sec;
       console.log(bar.width);

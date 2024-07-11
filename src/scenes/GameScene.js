@@ -15,9 +15,10 @@ export default class GameScene extends Phaser.Scene {
     // Set up the game here
     this.add.image(400, 300, "background");
 
-    const questionText = this.add.text(50, 50, "Who is the host of KBC?", {
-      fontSize: "32px",
+    const questionText = this.add.text(20, 50, "Who is the host of KBC?", {
+      fontSize: "28px",
       fill: "#fff",
+      wordWrap: { width: 360, useAdvancedWrap: true },
     });
     const answers = [
       "Amitabh Bachchan",
@@ -27,7 +28,7 @@ export default class GameScene extends Phaser.Scene {
     ];
     answers.forEach((answer, index) => {
       const yPosition = 150 + index * 50;
-      const answerText = this.add.text(50, yPosition, answer, {
+      const answerText = this.add.text(20, yPosition, answer, {
         fontSize: "28px",
         fill: "#fff",
       });
