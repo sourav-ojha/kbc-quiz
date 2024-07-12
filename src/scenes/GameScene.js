@@ -26,21 +26,36 @@ export default class GameScene extends Phaser.Scene {
       "Salman Khan",
       "Aamir Khan",
     ];
+
+    this.answerBlockPos = 0;
+
     answers.forEach((answer, index) => {
-      const yPosition = 150 + index * 50;
-      const answerText = this.add.text(20, yPosition, answer, {
-        fontSize: "28px",
-        fill: "#fff",
-      });
+      const yPosition = 150 + index * 50 + 10 * index;
+      this.answerBlockPos = yPosition;
+
+      const answerBox = this.add
+        .image(0, yPosition, "answer-btn")
+        .setScale(0.37)
+        .setOrigin(0);
+
+      const answerText = this.add
+        .text(40, yPosition + 10, answer, {
+          fontSize: "24px",
+          fill: "#fff",
+        })
+        .setOrigin(0);
+
+      answerBox.setInteractive();
+      answerBox.on("pointerdown", () => this.selectAnswer(answerText));
 
       answerText.setInteractive();
       answerText.on("pointerdown", () => this.selectAnswer(answerText));
     });
 
-    this.lockAnswerButton = this.add.text(100, 350, "Lock Answer", {
-      fontSize: "32px",
-      fill: "#f00",
-    });
+    this.lockAnswerButton = this.add
+      .image(100, this.answerBlockPos + 100, "lock-btn")
+      .setScale(0.37)
+      .setOrigin(0);
     this.lockAnswerButton.setInteractive();
     this.lockAnswerButton.on("pointerdown", this.lockAnswer.bind(this));
     this.lockAnswerButton.setVisible(false);
@@ -56,14 +71,12 @@ export default class GameScene extends Phaser.Scene {
   }
 
   lockAnswer() {
-    this.add.text(100, 400, "Answer Locked!", {
-      fontSize: "32px",
-      fill: "#0f0",
-    });
+    // this.add.text(100, 400, "Answer Locked!", {
+    //   fontSize: "32px",
+    //   fill: "#0f0",
+    // });
 
     // Transition to the post-lock screen
-    this.time.delayedCall(500, () => {
-      this.scene.start("PostLockScene", { answer: this.selectedAnswer.text });
-    });
+    this.scene.start("PostLockScene", { answer: this.selectedAnswer.text });
   }
 }

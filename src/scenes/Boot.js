@@ -11,7 +11,12 @@ export default class Boot extends Scene {
 
     this.load.image("background", "/assets/images/background.jpg");
     this.load.audio("intro", "/assets/audio/into.mp3");
-    this.load.image("kbc-logo", "/assets/images/kbc-logo.jpg");
+    this.load.image("kbc-logo", "/assets/images/Asset_2_BG_Logo.png");
+    this.load.image("lock-btn", "/assets/images/Asset_3_LockBtn.png");
+    this.load.image(
+      "answer-btn",
+      "/assets/images/Asset_4_AnswerBlockHolder.png"
+    );
   }
 
   create() {

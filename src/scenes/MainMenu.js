@@ -23,6 +23,7 @@ export default class MainMenu extends Scene {
 
     this.input.once("pointerdown", () => {
       this.scene.start("Preloader");
+      // this.scene.start("GameScene");
     });
   }
 }
